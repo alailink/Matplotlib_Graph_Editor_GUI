@@ -1,5 +1,5 @@
 # Matplotlib_Graph_Editor_GUI
-A GUI to make quick fixes to graphs in matplotlib. Uses the pysimplegui package for GUI implementation.
+A GUI to make quick fixes to graphs in matplotlib. Uses the pysimplegui package for GUI implementation. Created because I was dissatisfied with spyder's innate graphing GUI. Intended to create a user-friendly and fun experience for graphing in python, and approaches the utility of Matlab's graphing GUI.  
 
 This has a number of common adjustments to pyplot, such as axis labels, title, and legend options. It is continually being updated with new features. The program is completely dynamic and any changes are reflected immediately in the graph.
 
