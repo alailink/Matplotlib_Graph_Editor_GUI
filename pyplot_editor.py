@@ -127,7 +127,8 @@ def gui(*args):
             [sg.Text('Font size', pad=(0,(14,0)), justification='center', font='Helvetica 12', key='-OUT2-'),sg.Slider(range=(1, 32), key='-TITLESIZE-', enable_events = True, 
                       pad=(0,0), default_value=12, size=(24, 15), 
                       orientation='h', font=("Helvetica", 10))],
-            [sg.Frame('General Axes Options, global', [[sg.Column(column1_frame)]], key='-AXESBOX-', pad=(0,(14,0)))]]
+            [sg.Frame('General Axes Options, global', [[sg.Column(column1_frame)]], key='-AXESBOX-', pad=(0,(14,0)))],
+            [sg.B('Save', key='-SAVE-')]]
 
     
     #And here is where we create the layout
@@ -136,9 +137,7 @@ def gui(*args):
                [sg.Column(column1)]]
 
     layout2 = [[sg.Canvas(size=(fig.get_figwidth()*100, fig.get_figheight()*100), background_color='black', key='canvas')]]
-    
-   # layout_save()
-    
+        
     
     #[sg.Listbox(values=pyplot.style.available, size=(20, 6), key='-STYLE-', enable_events=True)]
     window = sg.Window('Simple GUI to envision ROC curves', layout)    
@@ -299,7 +298,10 @@ def gui(*args):
             else: fig.axes[CURRENT_SUBPLOT].legend(loc=4)
         def NOLEGEND(self):  
             if CURRENT_SUBPLOT == 'global': [sub.legend().remove() for sub in fig.axes[0:-1]]
-            else: fig.axes[CURRENT_SUBPLOT].legend().remove()             
+            else: fig.axes[CURRENT_SUBPLOT].legend().remove()      
+        def SAVE(self):
+            fname = sg.popup_get_file('Save figure', save_as=True)
+            fig.savefig(fname)
 
 ################################################################################################
             
